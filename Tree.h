@@ -44,11 +44,13 @@ struct Tree {
         if (el->right_ != nullptr)
             free_tree(el->right_);
         free(el);
+        size_--;
     }
 
     int push_left(node<T>* el, T value) {
         assert(el);
 
+        size_++;
         el->left_ = make_node(value);
         return 0;
     }
@@ -56,6 +58,7 @@ struct Tree {
     int push_right(node<T>* el, T value) {
         assert(el);
 
+        size_++;
         el->right_ = make_node(value);
         return 0;
     }
@@ -66,6 +69,7 @@ struct Tree {
             return 1;
         }
 
+        size_ = 1;
         head_ = make_node(value);
         return 0;
     }
